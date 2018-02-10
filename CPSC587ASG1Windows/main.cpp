@@ -70,11 +70,11 @@ bool rightmousePressed = false;
 bool play = false;
 
 float H;
-float dt = 0.04;
+float dt = 0.04f;
 float h;
 float v;
-float ds = 0.001;
-float prevT = glfwGetTime();
+float ds = 0.001f;
+float prevT = float(glfwGetTime());
 float distLow;
 float low;
 
@@ -135,7 +135,7 @@ GLFWwindow* window = 0;
 
 
 mat4 winRatio = mat4(1.f);
-mat4 M =  mat4(1.f);
+mat4 M =  mat4(1.0f);
 mat4 V;
 mat4 P;
 mat4 MXYZ = mat4(1.0f);
@@ -207,9 +207,9 @@ void resizeCallback(GLFWwindow* window, int width, int height)
 	winRatio[1][1] = minDim/float(height);
 }
 
-void printVec(vec3 vector)
+void printVec(vec3 vector, string vectorName)
 {
-	cout << "X: " << vector.x << " Y: " << vector.y << " Z: " << vector.z << endl;
+	cout << vectorName << ": " << "X: " << vector.x << " Y: " << vector.y << " Z: " << vector.z << endl;
 }
 
 
@@ -338,7 +338,7 @@ bool loadUniforms(GLuint program, mat4 perspective, mat4 modelview)
 }
 
 /* used for rendering the cart */
-void render()
+void render(GLuint vao, VertexBuffers vbo, vector<vec3> points, vector<vec3> normals, vector<unsigned int> indices )
 {
 	glBindVertexArray(vao);		//Use the LINES vertex array
 	glUseProgram(program);
@@ -371,7 +371,7 @@ void renderPillar(GLuint vao, VertexBuffers vbo, vector<vec3> points, vector<vec
 			(void*)0			//Offset
 			);
 
-	CheckGLErrors("render");
+	CheckGLErrors("renderPillar");
 	glUseProgram(0);
 	glBindVertexArray(0);
 }
@@ -390,7 +390,7 @@ void renderGround(GLuint vao, VertexBuffers vbo, vector<vec3> points, vector<vec
 			(void*)0			//Offset
 			);
 
-	CheckGLErrors("render");
+	CheckGLErrors("renderGround");
 	glUseProgram(0);
 	glBindVertexArray(0);
 }
@@ -414,7 +414,7 @@ void renderLine(GLuint vao, VertexBuffers vbo, vector<vec3> points, vector<vec3>
 	
 	
 	
-	CheckGLErrors("renderLineTest");
+	CheckGLErrors("renderLine");
 	glUseProgram(0);
 	glBindVertexArray(0);
 }
@@ -437,7 +437,7 @@ void renderXYZ()
 	
 	
 	
-	CheckGLErrors("renderLine");
+	CheckGLErrors("renderXYZ");
 	glUseProgram(0);
 	glBindVertexArray(0);
 	
@@ -743,10 +743,10 @@ GLFWwindow* createGLFWWindow()
     glfwSetErrorCallback(ErrorCallback);
 
     // attempt to create a window with an OpenGL 4.1 core profile context
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
-    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+  //  glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+  //  glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
+   // glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+   // glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     window = glfwCreateWindow(1024, 1024, "OpenGL Example", 0, 0);
     if (!window) {
         cout << "Program failed to create GLFW window, TERMINATING" << endl;
@@ -855,7 +855,7 @@ float lowestPoint(vector<vec3> points)
 	return L;
 }
 /* sets the point to start deceleration at*/
-float decelPoint(vector<vec3>points, float low)
+int decelPoint(vector<vec3>points, float low)
 {
 	float nextH;
 	float h;
@@ -914,7 +914,7 @@ void readFile()
 	ifstream myFile;
 	
 	float x,y,z;
-	vec3 input;
+//	vec3 input;
 	
 
 	//myFile.open("trackCoords.txt");
@@ -940,21 +940,18 @@ void readFile()
 float currStateV (int i, float h)
 {
 		if(gravityFree)
-		{
-			
+		{			
 			v = velocity(h);
 			if (i >= startDec)
 			{
 				vdec = v;
 				decel = true;
 				gravityFree = false;
-			}
-			
-			
+			}		
 		}
 		if(lifting)
 		{
-			v = 2.9;
+			v = 2.9f;
 			if(i < startPoint && i > highestPointIndex)
 			{
 				lifting = false;
@@ -1101,7 +1098,7 @@ int main(int argc, char *argv[])
     // run an event-triggered main loop
     while (!glfwWindowShouldClose(window))
     {
-		glClearColor(0.2, 0.2, 0.7, 1.0);
+		glClearColor(0.2f, 0.2f, 0.7f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);		//Clear color and depth buffers (Haven't covered yet)
 		
 		h = linePoints[i].y;
@@ -1116,17 +1113,21 @@ int main(int argc, char *argv[])
 		
 	
 		V = cam.getMatrix();
+
+		/*--------------------IN FOR TESTING---------------------*/
+		loadUniforms(program, winRatio*perspectiveMatrix*V, MXYZ);
+		renderXYZ();
+      /*---------------------------------------------------------*/
 		
-      
 		loadUniforms(program, winRatio*perspectiveMatrix*V, M);
-		render();
+		render(vao, vbo, points, normals, indices);
 		
         loadUniforms(program, winRatio*perspectiveMatrix*V, mWheelR);
 		renderLine(vaoWheel, vboWheel, wheel, wheelNorm, wheelInd);
-      
+
 		loadUniforms(program, winRatio*perspectiveMatrix*V, mWheelL);
 		renderLine(vaoWheel, vboWheel, wheel, wheelNorm, wheelInd);
-		
+
 		loadUniforms(program, winRatio*perspectiveMatrix*V, scale(mat4(1.0f), vec3(25.0f, 3.0f, 30.0f)));
 		renderGround(vaoGround, vboGround, ground, groundNorm, groundInd);
 	
@@ -1148,6 +1149,7 @@ int main(int argc, char *argv[])
 		loadUniforms(program, winRatio*perspectiveMatrix*V, mat4(1.0f));
 		renderLine(vaoTrackCon, vboTrackCon, trackConnect, trackConnectNorm, trackConnectInd);
 	
+		
         // scene is rendered to the back buffer, so swap to front for display
         glfwSwapInterval(1);
         glfwSwapBuffers(window);
@@ -1262,15 +1264,15 @@ void animate(vec3 cartLoc, int &i, vector<vec3> points, float ds, float v)
 
 
 	vec3 N = normal(centDirection, gravity, v, r);
-	
+	printVec(N, "Normal");//TESTING
 	vec3 tempT = tangentTemp(nextPosOnCurve, prevPos);
 
 
 	vec3 B = binormal(N, tempT);
-	
+	printVec(B, "Binormal");//TESTING
 	
 	vec3 T = tangent(B, N);
-	
+	printVec(T, "Tangent");//TESTING
 	mat4 modelTrans = translate(mat4(1.0f), nextPos);
 	
 	
@@ -1290,7 +1292,7 @@ void animate(vec3 cartLoc, int &i, vector<vec3> points, float ds, float v)
 	wheelTemp = cartLoc - Btemp;
 	mat4 wheelLTrans = translate(mat4(1.0f), wheelTemp);
 	
-	M = translate(mat4(1.0f), vec3(0.0f,1.0f,0.0f)) * modelTrans * frenetFrame * scale(mat4(1.0f), vec3(0.75f, 0.75f, 0.75f));
+	M = translate(mat4(1.0f), vec3(0.0f, 1.0f, 0.0f)) * modelTrans * frenetFrame * scale(mat4(1.0f), vec3(0.75f, 0.75f, 0.75f));
 	MXYZ = modelTrans * frenetFrame;
 	freeFrame = frenetFrame;
 	
@@ -1464,7 +1466,7 @@ void createTrack (vector<vec3> points)
 	
 	int nextEl;
 	vec3 binormal;
-	vec3 cartLoc;
+	//vec3 cartLoc;
 	float ds;
 	float v;
 	for(int j = 0; j < points.size(); j++)

@@ -1,1 +1,23 @@
-﻿  CPSC587ASG1Windows.vcxproj -> C:\Users\Johnny\Desktop\CPSC587ASG1Windows\Debug\CPSC587ASG1Windows.exe
+﻿  main.cpp
+c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(73): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(76): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(77): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(711): warning C4018: '<': signed/unsigned mismatch
+c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(809): warning C4018: '<': signed/unsigned mismatch
+c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(822): warning C4018: '<': signed/unsigned mismatch
+c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(841): warning C4018: '<': signed/unsigned mismatch
+c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(863): warning C4018: '<': signed/unsigned mismatch
+c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(868): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(880): warning C4018: '<': signed/unsigned mismatch
+c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(917): warning C4101: 'input': unreferenced local variable
+c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(954): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(1073): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(1101): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(1383): warning C4018: '<': signed/unsigned mismatch
+c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(1396): warning C4018: '<': signed/unsigned mismatch
+c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(1412): warning C4018: '<': signed/unsigned mismatch
+c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(1467): warning C4018: '<': signed/unsigned mismatch
+c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(1495): warning C4018: '<': signed/unsigned mismatch
+c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(1464): warning C4101: 'cartLoc': unreferenced local variable
+c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(873): warning C4715: 'decelPoint': not all control paths return a value
+  CPSC587ASG1Windows.vcxproj -> C:\Users\Johnny\Desktop\CPSC587ASG1Windows\Debug\CPSC587ASG1Windows.exe
