@@ -1115,8 +1115,8 @@ int main(int argc, char *argv[])
 		V = cam.getMatrix();
 
 		/*--------------------IN FOR TESTING---------------------*/
-		loadUniforms(program, winRatio*perspectiveMatrix*V, MXYZ);
-		renderXYZ();
+		/*loadUniforms(program, winRatio*perspectiveMatrix*V, MXYZ);
+		renderXYZ();*/
       /*---------------------------------------------------------*/
 		
 		loadUniforms(program, winRatio*perspectiveMatrix*V, M);
