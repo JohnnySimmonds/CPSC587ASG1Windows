@@ -1252,8 +1252,7 @@ vec3 binormal(vec3 normal, vec3 tangent)
 /* Moves the cart along the track */
 void animate(vec3 cartLoc, int &i, vector<vec3> points, float ds, float v)
 {
-	
-	
+
 	vec3 nextPos = posOnCurve(cartLoc, i, points, ds);
 	vec3 prevPos = points[wrap(i-1)];
 	vec3 nextPosOnCurve = points[wrap(i+1)];

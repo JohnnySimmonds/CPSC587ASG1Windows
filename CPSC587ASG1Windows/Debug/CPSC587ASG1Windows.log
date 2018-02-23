@@ -1,1 +1,19 @@
-﻿
+﻿  main.cpp
+c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(711): warning C4018: '<': signed/unsigned mismatch
+c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(809): warning C4018: '<': signed/unsigned mismatch
+c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(822): warning C4018: '<': signed/unsigned mismatch
+c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(841): warning C4018: '<': signed/unsigned mismatch
+c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(863): warning C4018: '<': signed/unsigned mismatch
+c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(880): warning C4018: '<': signed/unsigned mismatch
+c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(1388): warning C4018: '<': signed/unsigned mismatch
+c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(1401): warning C4018: '<': signed/unsigned mismatch
+c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(1417): warning C4018: '<': signed/unsigned mismatch
+c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(1472): warning C4018: '<': signed/unsigned mismatch
+c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(1500): warning C4018: '<': signed/unsigned mismatch
+c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(873): warning C4715: 'decelPoint': not all control paths return a value
+  CPSC587ASG1Windows.vcxproj -> C:\Users\Johnny\Desktop\CPSC587ASG1Windows\Debug\CPSC587ASG1Windows.exe
+  C:\Users\Johnny\Desktop\CPSC587ASG1Windows\CPSC587ASG1Windows\Shaders\fragment.glsl
+  C:\Users\Johnny\Desktop\CPSC587ASG1Windows\CPSC587ASG1Windows\Shaders\vertex.glsl
+  2 File(s) copied
+  C:\Users\Johnny\Desktop\CPSC587ASG1Windows\CPSC587ASG1Windows\track2.txt
+  1 File(s) copied
