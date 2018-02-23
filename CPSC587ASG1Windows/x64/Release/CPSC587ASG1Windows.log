@@ -1,0 +1,28 @@
+﻿  camera.cpp
+  main.cpp
+main.cpp(353): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+main.cpp(372): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+main.cpp(391): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+main.cpp(413): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+main.cpp(436): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+main.cpp(1182): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+main.cpp(1614): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+main.cpp(1644): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+  glad.c
+main.obj : error LNK2001: unresolved external symbol glfwSwapBuffers
+main.obj : error LNK2001: unresolved external symbol glfwSwapInterval
+main.obj : error LNK2001: unresolved external symbol glfwGetTime
+main.obj : error LNK2001: unresolved external symbol glfwTerminate
+main.obj : error LNK2001: unresolved external symbol glfwSetMouseButtonCallback
+main.obj : error LNK2001: unresolved external symbol glfwPollEvents
+main.obj : error LNK2001: unresolved external symbol glfwInit
+main.obj : error LNK2001: unresolved external symbol glfwSetKeyCallback
+main.obj : error LNK2001: unresolved external symbol glfwSetWindowShouldClose
+main.obj : error LNK2001: unresolved external symbol glfwCreateWindow
+main.obj : error LNK2001: unresolved external symbol glfwMakeContextCurrent
+main.obj : error LNK2001: unresolved external symbol glfwDestroyWindow
+main.obj : error LNK2001: unresolved external symbol glfwSetCursorPosCallback
+main.obj : error LNK2001: unresolved external symbol glfwSetWindowSizeCallback
+main.obj : error LNK2001: unresolved external symbol glfwSetErrorCallback
+main.obj : error LNK2001: unresolved external symbol glfwWindowShouldClose
+C:\Users\Johnny\Desktop\CPSC587ASG1Windows\x64\Release\CPSC587ASG1Windows.exe : fatal error LNK1120: 16 unresolved externals

@@ -1264,15 +1264,15 @@ void animate(vec3 cartLoc, int &i, vector<vec3> points, float ds, float v)
 
 
 	vec3 N = normal(centDirection, gravity, v, r);
-	printVec(N, "Normal");//TESTING
+
 	vec3 tempT = tangentTemp(nextPosOnCurve, prevPos);
 
 
 	vec3 B = binormal(N, tempT);
-	printVec(B, "Binormal");//TESTING
+
 	
 	vec3 T = tangent(B, N);
-	printVec(T, "Tangent");//TESTING
+
 	mat4 modelTrans = translate(mat4(1.0f), nextPos);
 	
 	
@@ -1314,7 +1314,7 @@ Sets up the frenet frame with the Normal N, binormal B, tangent T
 */
 mat4 freFrame(vec3 N, vec3 B, vec3 T)
 {
-	mat4 frenetFrame;
+	mat4 frenetFrame = mat4(1.0f);
 	
 	frenetFrame[0][0] = B.x; 
 	frenetFrame[0][1] = B.y; 
