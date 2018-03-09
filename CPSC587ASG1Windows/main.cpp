@@ -129,7 +129,7 @@ vector<unsigned int> pillarInd, pillarOInd;
 vector<vec3> filePoints;
 vec3 gravity = vec3(0.0f, -9.81f, 0.0f);
 
-Camera* activeCamera;
+camera* activeCamera;
 
 GLFWwindow* window = 0;
 
@@ -160,40 +160,82 @@ void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods
     {
 		play = !play;
 	}
+	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
+		glfwSetWindowShouldClose(window, true);
+	if (key == GLFW_KEY_W && (action == GLFW_REPEAT || action == GLFW_PRESS))
+		activeCamera->moveCameraPositionForward();
+	if (key == GLFW_KEY_S && (action == GLFW_REPEAT || action == GLFW_PRESS))
+		activeCamera->moveCameraPositionBackwards();
+	if (key == GLFW_KEY_A && (action == GLFW_REPEAT || action == GLFW_PRESS))
+		activeCamera->moveCameraPositionLeft();
+	if (key == GLFW_KEY_D && (action == GLFW_REPEAT || action == GLFW_PRESS))
+		activeCamera->moveCameraPositionRight();
 
+	activeCamera->updateCameraView();
 }
-
+bool mouseButtonOnePressed = false;
+bool isFirstMousePosition = true;
 void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods)
 {
-	if( (action == GLFW_PRESS) || (action == GLFW_RELEASE) ){
-		if(button == GLFW_MOUSE_BUTTON_LEFT)
-			leftmousePressed = !leftmousePressed;
-		else if(button == GLFW_MOUSE_BUTTON_RIGHT)
-			rightmousePressed = !rightmousePressed;
-	}
-}
 
-void mousePosCallback(GLFWwindow* window, double xpos, double ypos)
+	if (button == GLFW_MOUSE_BUTTON_LEFT && (action == GLFW_PRESS || action == GLFW_REPEAT))
+	{
+		mouseButtonOnePressed = true;
+	}
+	else
+		mouseButtonOnePressed = false;
+	
+}
+float lastX, lastY, yaw, pitch;
+void mousePosCallback(GLFWwindow* window, double xPosition, double yPosition)
 {
-	int vp[4];
-	glGetIntegerv(GL_VIEWPORT, vp);
-
-	vec2 newPos = vec2(xpos/(double)vp[2], -ypos/(double)vp[3])*2.f - vec2(1.f);
-
-	vec2 diff = newPos - mousePos;
-	if(leftmousePressed){
-		activeCamera->trackballRight(-diff.x);
-		activeCamera->trackballUp(-diff.y);
+	
+	if (isFirstMousePosition)
+	{
+		lastX = xPosition;
+		lastY = yPosition;
+		isFirstMousePosition = false;
 	}
-	else if(rightmousePressed){
-		float zoomBase = (diff.y > 0) ? 1.f/2.f : 2.f;
+	if (mouseButtonOnePressed)
+	{
+		float xOffset = xPosition - lastX;
+		float yOffset = lastY - yPosition;
+		lastX = xPosition;
+		lastY = yPosition;
 
-		activeCamera->zoom(pow(zoomBase, abs(diff.y)));
+		float sensitivity = 0.5f;
+		xOffset *= sensitivity;
+		yOffset *= sensitivity;
+
+		yaw += xOffset;
+		pitch += yOffset;
+
+		if (pitch > 89.0f)
+			pitch = 89.0f;
+		if (pitch < -89.0f)
+			pitch = -89.0f;
+
+		vec3 target = vec3(0.0f, 0.0f, -3.0f);
+		target.x = cos(radians(yaw)) * cos(radians(pitch));
+		target.y = sin(radians(pitch));
+		target.z = sin(radians(yaw)) * cos(radians(pitch));
+
+		activeCamera->updateCameraTarget(normalize(target));
+		activeCamera->updateCameraView();
 	}
 
-	mousePos = newPos;
+
 }
-
+float fov = 45.0f;
+void scrollCallback(GLFWwindow* window, double xoffset, double yoffset)
+{
+	if (fov >= 1.0f && fov <= 90.0f)
+		fov -= yoffset;
+	if (fov <= 1.0f)
+		fov = 1.0f;
+	if (fov >= 90.0f)
+		fov = 90.0f;
+}
 void resizeCallback(GLFWwindow* window, int width, int height)
 {
 	int vp[4];
@@ -759,6 +801,7 @@ GLFWwindow* createGLFWWindow()
     glfwSetMouseButtonCallback(window, mouseButtonCallback);
     glfwSetCursorPosCallback(window, mousePosCallback);
     glfwSetWindowSizeCallback(window, resizeCallback);
+	glfwSetScrollCallback(window, scrollCallback);
     glfwMakeContextCurrent(window);
 
     return window;
@@ -1077,10 +1120,9 @@ int main(int argc, char *argv[])
 
 	
 	
-	Camera cam = Camera(vec3(0, 0, -1), vec3(-20, 20, 70));
+	camera cam;
 	activeCamera = &cam;
-	//float fovy, float aspect, float zNear, float zFar
-	mat4 perspectiveMatrix = perspective(radians(80.f), 1.f, 0.1f, 300.f);
+	mat4 perspectiveMatrix = perspective(radians(fov), 1.f, 0.1f, 300.f);
 
 	
 	int i;
@@ -1112,13 +1154,10 @@ int main(int argc, char *argv[])
 			}
 		
 	
-		V = cam.getMatrix();
 
-		/*--------------------IN FOR TESTING---------------------*/
-		/*loadUniforms(program, winRatio*perspectiveMatrix*V, MXYZ);
-		renderXYZ();*/
-      /*---------------------------------------------------------*/
-		
+		V = cam.getCameraView();
+		perspectiveMatrix = perspective(radians(fov), 1.f, 0.1f, 300.f);
+	
 		loadUniforms(program, winRatio*perspectiveMatrix*V, M);
 		render(vao, vbo, points, normals, indices);
 		
@@ -1150,7 +1189,7 @@ int main(int argc, char *argv[])
 		renderLine(vaoTrackCon, vboTrackCon, trackConnect, trackConnectNorm, trackConnectInd);
 	
 		
-        // scene is rendered to the back buffer, so swap to front for display
+        
         glfwSwapInterval(1);
         glfwSwapBuffers(window);
         
