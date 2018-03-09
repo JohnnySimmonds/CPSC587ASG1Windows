@@ -1,16 +1,23 @@
 ﻿  main.cpp
-c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(711): warning C4018: '<': signed/unsigned mismatch
-c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(809): warning C4018: '<': signed/unsigned mismatch
-c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(822): warning C4018: '<': signed/unsigned mismatch
-c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(841): warning C4018: '<': signed/unsigned mismatch
-c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(863): warning C4018: '<': signed/unsigned mismatch
-c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(880): warning C4018: '<': signed/unsigned mismatch
-c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(1388): warning C4018: '<': signed/unsigned mismatch
-c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(1401): warning C4018: '<': signed/unsigned mismatch
-c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(1417): warning C4018: '<': signed/unsigned mismatch
-c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(1472): warning C4018: '<': signed/unsigned mismatch
-c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(1500): warning C4018: '<': signed/unsigned mismatch
-c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(873): warning C4715: 'decelPoint': not all control paths return a value
+c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(195): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(196): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(201): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(202): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(203): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(204): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(233): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(753): warning C4018: '<': signed/unsigned mismatch
+c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(852): warning C4018: '<': signed/unsigned mismatch
+c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(865): warning C4018: '<': signed/unsigned mismatch
+c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(884): warning C4018: '<': signed/unsigned mismatch
+c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(906): warning C4018: '<': signed/unsigned mismatch
+c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(923): warning C4018: '<': signed/unsigned mismatch
+c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(1426): warning C4018: '<': signed/unsigned mismatch
+c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(1439): warning C4018: '<': signed/unsigned mismatch
+c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(1455): warning C4018: '<': signed/unsigned mismatch
+c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(1510): warning C4018: '<': signed/unsigned mismatch
+c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(1538): warning C4018: '<': signed/unsigned mismatch
+c:\users\johnny\desktop\cpsc587asg1windows\cpsc587asg1windows\main.cpp(916): warning C4715: 'decelPoint': not all control paths return a value
   CPSC587ASG1Windows.vcxproj -> C:\Users\Johnny\Desktop\CPSC587ASG1Windows\Debug\CPSC587ASG1Windows.exe
   C:\Users\Johnny\Desktop\CPSC587ASG1Windows\CPSC587ASG1Windows\Shaders\fragment.glsl
   C:\Users\Johnny\Desktop\CPSC587ASG1Windows\CPSC587ASG1Windows\Shaders\vertex.glsl
